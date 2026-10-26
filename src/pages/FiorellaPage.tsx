@@ -69,6 +69,7 @@ function FiorellaPage() {
       <section className="fio-hero fio-shell" aria-labelledby="fio-title">
         <div className="fio-orbit" aria-hidden="true"><i /><i /><i /></div>
         <div className="fio-kicker"><span>APORTE 01</span> SISTEMA · REQUISITOS · DATOS</div>
+        <div className="fio-role-title">DEFINICIÓN DEL SISTEMA, REQUISITOS Y DATOS</div>
         <h1 id="fio-title">Fiorella<br /><strong>Easdale Castillo</strong></h1>
         <div className="fio-intro-grid">
           <p>Su aporte convierte las necesidades de Gym Master VR en parámetros técnicos: define requisitos, modela la representación digital y calcula qué volumen de datos debe sostener la arquitectura.</p>

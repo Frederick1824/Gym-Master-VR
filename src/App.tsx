@@ -1,5 +1,6 @@
 import BrandMark from './components/BrandMark'
 import EmmanuelPage from './pages/EmmanuelPage'
+import EmilioPage from './pages/EmilioPage'
 import FiorellaPage from './pages/FiorellaPage'
 
 const nodes = [
@@ -142,12 +143,16 @@ function LandingPage() {
             </button>
             <div className="member-links">
               <a className="member-entry" href="/fiorella">
-                <span>Aporte individual</span>
+                <span>Definición del sistema, requisitos y datos</span>
                 Fiorella Easdale Castillo
               </a>
               <a className="member-entry" href="/emmanuel">
                 <span>Lógica digital</span>
                 Emmanuel Gillio
+              </a>
+              <a className="member-entry" href="/emilio">
+                <span>CPU, GPU y ciclo de instrucción</span>
+                Emilio Santiago Guzmán
               </a>
             </div>
           </div>
@@ -174,6 +179,7 @@ function App() {
 
   if (path === '/fiorella') return <FiorellaPage />
   if (path === '/emmanuel') return <EmmanuelPage />
+  if (path === '/emilio') return <EmilioPage />
   return <LandingPage />
 }
 
