@@ -2,6 +2,7 @@ import BrandMark from './components/BrandMark'
 import EmmanuelPage from './pages/EmmanuelPage'
 import EmilioPage from './pages/EmilioPage'
 import FiorellaPage from './pages/FiorellaPage'
+import FedericoPage from './pages/FedericoPage'
 import JosefinaPage from './pages/JosefinaPage'
 import NahuelPage from './pages/NahuelPage'
 
@@ -164,6 +165,10 @@ function LandingPage() {
                 <span>Entrada/Salida, comunicación, interrupciones y DMA</span>
                 Marcelo Nahuel Raspo
               </a>
+              <a className="member-entry" href="/federico">
+                <span>Integración, arquitectura y rendimiento</span>
+                Federico Montoro
+              </a>
             </div>
           </div>
         </div>
@@ -192,6 +197,7 @@ function App() {
   if (path === '/emilio') return <EmilioPage />
   if (path === '/josefina') return <JosefinaPage />
   if (path === '/nahuel') return <NahuelPage />
+  if (path === '/federico') return <FedericoPage />
   return <LandingPage />
 }
 

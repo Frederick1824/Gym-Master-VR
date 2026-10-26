@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react'
 import BrandMark from '../components/BrandMark'
+import ContributionGrid from '../components/ContributionGrid'
 import MemberIdentity from '../components/MemberIdentity'
 import MemberNavigation from '../components/MemberNavigation'
 import { memberTheme } from '../memberConfig'
 import '../emilio.css'
+
+const contribution = [
+  { title: 'Tareas realizadas', items: ['Análisis de CPU y GPU', 'Relación entre UC, ALU, registros, caché e ISA', 'Ciclo de instrucción aplicado al tracking', 'Explicación del pipeline'] },
+  { title: 'Decisiones', items: ['Separación de responsabilidades entre CPU y GPU', 'Utilización de arquitectura x86-64', 'Procesamiento eficiente para baja latencia y alta frecuencia'] },
+  { title: 'Dificultades', items: ['Relacionar CPU y GPU sin confundir sus responsabilidades', 'Representar correctamente las etapas del ciclo de instrucción', 'Explicar el pipeline sin confundir rendimiento global con latencia individual'] },
+  { title: 'Aprendizajes', items: ['Funcionamiento conjunto de CPU y GPU', 'Relación entre UC, ALU, registros, caché e ISA', 'Comprensión del ciclo Fetch → Decode → Execute → Memory Access → Write Back', 'Función del pipeline en el rendimiento'] },
+]
 
 const instructionStages = [
   { key: 'FETCH', title: 'Fetch', description: 'La CPU obtiene de memoria la instrucción que debe ejecutar.', module: 'Memoria → Registro de instrucción' },
@@ -167,8 +175,7 @@ function EmilioPage() {
 
       <section className="emi-section emi-shell" aria-labelledby="contribution-title">
         <div className="emi-section-heading"><span>09 / APORTE INDIVIDUAL</span><h2 id="contribution-title">Mi aporte</h2></div>
-        {/* Ampliar esta sección cuando se incorpore el apéndice individual definitivo de Emilio. */}
-        <div className="emi-contribution-grid"><article><span>01</span><h3>Tareas realizadas</h3><ul><li>Análisis de CPU y GPU</li><li>Relación entre UC, ALU, registros, caché e ISA</li><li>Ciclo de instrucción aplicado al tracking</li><li>Explicación del pipeline</li></ul></article><article><span>02</span><h3>Decisiones técnicas</h3><ul><li>Separación de responsabilidades entre CPU y GPU</li><li>Utilización de arquitectura x86-64</li><li>Procesamiento eficiente para baja latencia y alta frecuencia</li></ul></article></div>
+        <ContributionGrid groups={contribution} />
       </section>
 
       <section className="emi-section emi-shell" aria-labelledby="connection-title">

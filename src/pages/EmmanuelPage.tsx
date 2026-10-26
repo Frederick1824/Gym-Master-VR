@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import BrandMark from '../components/BrandMark'
+import ContributionGrid from '../components/ContributionGrid'
 import MemberIdentity from '../components/MemberIdentity'
 import MemberNavigation from '../components/MemberNavigation'
 import { memberTheme } from '../memberConfig'
@@ -155,7 +156,7 @@ function EmmanuelPage() {
 
       <section className="emm-section emm-shell" aria-labelledby="contribution-title">
         <div className="emm-section-heading"><span>08 / APÉNDICE INDIVIDUAL</span><h2 id="contribution-title">Mi aporte</h2></div>
-        <div className="emm-contribution-grid">{contributionGroups.map((group, index) => <article key={group.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
+        <ContributionGrid groups={contributionGroups} />
       </section>
 
       <MemberNavigation currentId="emmanuel" />

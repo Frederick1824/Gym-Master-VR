@@ -1,5 +1,6 @@
 import { useState, type CSSProperties } from 'react'
 import BrandMark from '../components/BrandMark'
+import ContributionGrid from '../components/ContributionGrid'
 import MemberIdentity from '../components/MemberIdentity'
 import MemberNavigation from '../components/MemberNavigation'
 import { memberTheme } from '../memberConfig'
@@ -87,7 +88,7 @@ function JosefinaPage() {
 
       <section className="jos-section jos-shell" aria-labelledby="contribution-title">
         <div className="jos-section-heading"><span>07 / APÉNDICE INDIVIDUAL</span><h2 id="contribution-title">Mi aporte</h2></div>
-        <div className="jos-contribution-grid">{contribution.map((group, index) => <article key={group.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
+        <ContributionGrid groups={contribution} />
       </section>
 
       <MemberNavigation currentId="josefina" />

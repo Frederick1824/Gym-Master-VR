@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import BrandMark from '../components/BrandMark'
+import ContributionGrid from '../components/ContributionGrid'
 import MemberIdentity from '../components/MemberIdentity'
 import MemberNavigation from '../components/MemberNavigation'
 import { memberTheme } from '../memberConfig'
@@ -23,7 +24,9 @@ const interfaces = [
 
 const contribution = [
   { title: 'Tareas realizadas', items: ['Identificación de dispositivos de entrada y salida', 'Análisis de interfaces', 'Comunicación entre periféricos y sistema', 'Estudio de interrupciones', 'Aplicación de DMA', 'Relación entre transferencia de datos, latencia y rendimiento'] },
-  { title: 'Decisiones técnicas', items: ['Utilización de interfaces adecuadas según el tipo de dato', 'Consideración de DisplayPort / USB-C para video', 'Utilización de USB para sensores y controladores', 'Uso de DMA para transferencias frecuentes hacia RAM', 'Uso de interrupciones para eventos importantes'] },
+  { title: 'Decisiones', items: ['Utilización de interfaces adecuadas según el tipo de dato', 'Consideración de DisplayPort / USB-C para video', 'Utilización de USB para sensores y controladores', 'Uso de DMA para transferencias frecuentes hacia RAM', 'Uso de interrupciones para eventos importantes'] },
+  { title: 'Dificultades', items: ['Diferenciar qué interfaz corresponde a cada tipo de transferencia', 'Comprender cuándo conviene utilizar DMA', 'Relacionar interrupciones, latencia y carga de CPU', 'Integrar entrada/salida con memoria y procesamiento'] },
+  { title: 'Aprendizajes', items: ['Funcionamiento de interfaces de entrada/salida', 'Diferencias entre transferencia gestionada por CPU y DMA', 'Utilidad de las interrupciones', 'Relación entre ancho de banda, latencia y rendimiento'] },
 ]
 
 function NahuelPage() {
@@ -103,8 +106,7 @@ function NahuelPage() {
 
       <section className="nah-section nah-shell" aria-labelledby="contribution-title">
         <div className="nah-section-heading"><span>09 / APÉNDICE INDIVIDUAL</span><h2 id="contribution-title">Mi aporte</h2></div>
-        {/* Ampliar esta sección cuando se incorpore el apéndice individual definitivo de Nahuel. */}
-        <div className="nah-contribution-grid">{contribution.map((group, index) => <article key={group.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
+        <ContributionGrid groups={contribution} />
       </section>
 
       <MemberNavigation currentId="nahuel" />
