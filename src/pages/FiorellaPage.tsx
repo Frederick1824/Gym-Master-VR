@@ -15,10 +15,10 @@ const requirements = [
 ]
 
 const contribution = [
-  ['01', 'Definición de requisitos', 'Conversión de objetivos de experiencia en métricas técnicas verificables.'],
-  ['02', 'Modelado y codificación', 'Estructuras compactas para telemetría, posición espacial, estados y comandos.'],
-  ['03', 'Cálculo de ancho de banda', 'Estimación separada de los flujos de tracking y video para dimensionar interfaces.'],
-  ['04', 'Consolidación general', 'Integración de requisitos y datos como base para las decisiones del sistema.'],
+  { title: 'Tareas realizadas', items: ['Definición de requisitos cuantificables del sistema', 'Modelado de datos de tracking', 'Representación binaria y hexadecimal', 'Cálculo de tasa de transferencia', 'Cálculo de ancho de banda gráfico'] },
+  { title: 'Decisiones', items: ['Frecuencia mínima de actualización de 90 Hz', 'Latencia objetivo máxima de 20 ms', 'Uso de Float32 para posición y orientación', 'Palabra de control de 16 bits', 'Interfaces de alta velocidad justificadas por el flujo gráfico'] },
+  { title: 'Dificultades', items: ['Traducir movimientos físicos a datos digitales', 'Mantener coherencia entre bits, bytes y tasas de transferencia', 'Relacionar los cálculos con decisiones reales de arquitectura'] },
+  { title: 'Aprendizajes', items: ['Representación digital de datos', 'Conversión entre binario y hexadecimal', 'Cálculo de volumen y transferencia de información', 'Relación entre requisitos y arquitectura del sistema'] },
 ]
 
 const format = (value: number, maximumFractionDigits = 2) =>
@@ -208,9 +208,7 @@ function FiorellaPage() {
           <span>05 / APÉNDICE INDIVIDUAL</span>
           <h2 id="contribution-title">Mi aporte</h2>
         </div>
-        <div className="contribution-list">
-          {contribution.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}
-        </div>
+        <div className="fio-contribution-grid">{contribution.map((group, index) => <article key={group.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
       </section>
 
       <section className="fio-section fio-shell connection-section" aria-labelledby="connection-title">
