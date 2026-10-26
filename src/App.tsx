@@ -17,9 +17,9 @@ function TrackingField() {
       <svg className="signal-map" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="signal" x1="0" x2="1">
-            <stop offset="0" stopColor="#9dff4f" stopOpacity="0" />
-            <stop offset=".52" stopColor="#9dff4f" stopOpacity=".65" />
-            <stop offset="1" stopColor="#46f2c2" stopOpacity="0" />
+            <stop offset="0" stopColor="#0F4C81" stopOpacity="0" />
+            <stop offset=".52" stopColor="#4FC3F7" stopOpacity=".62" />
+            <stop offset="1" stopColor="#1E88E5" stopOpacity="0" />
           </linearGradient>
         </defs>
         <path className="signal-line signal-a" d="M-30 612 C240 450 330 716 587 535 S1030 310 1480 464" />
