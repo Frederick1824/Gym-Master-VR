@@ -3,8 +3,8 @@
 .member-identity > strong { display: flex; flex-direction: column; max-width: 58rem; font-size: clamp(1.9rem, 4.8vw, 4.7rem); line-height: .91; letter-spacing: -.045em; text-transform: uppercase; text-wrap: balance; }
 .member-identity > strong b { color: #f5f7fa; font: inherit; }
 .member-identity > strong i { margin-top: .08em; color: transparent; font: inherit; font-style: normal; -webkit-text-stroke: 1.2px var(--member-accent); text-shadow: 0 0 28px rgb(var(--member-accent-rgb) / .1); }
-.fiorella-page .fio-hero h1, .emmanuel-page .emm-hero h1, .emilio-page .emi-hero h1, .josefina-page .jos-hero h1 { margin: 1.3rem 0 2.2rem; color: #a9b4c2; font-size: clamp(1.65rem, 3.2vw, 3rem); line-height: 1.03; letter-spacing: -.035em; }
-.fiorella-page .fio-hero h1 strong, .emmanuel-page .emm-hero h1 strong, .emilio-page .emi-hero h1 strong, .josefina-page .jos-hero h1 strong { color: #a9b4c2; -webkit-text-stroke: 0; text-shadow: none; }
+.fiorella-page .fio-hero h1, .emmanuel-page .emm-hero h1, .emilio-page .emi-hero h1, .josefina-page .jos-hero h1, .nahuel-page .nah-hero h1 { margin: 1.3rem 0 2.2rem; color: #a9b4c2; font-size: clamp(1.65rem, 3.2vw, 3rem); line-height: 1.03; letter-spacing: -.035em; }
+.fiorella-page .fio-hero h1 strong, .emmanuel-page .emm-hero h1 strong, .emilio-page .emi-hero h1 strong, .josefina-page .jos-hero h1 strong, .nahuel-page .nah-hero h1 strong { color: #a9b4c2; -webkit-text-stroke: 0; text-shadow: none; }
 .member-navigation { display: grid; grid-template-columns: repeat(2, 1fr); width: min(calc(100% - 3rem), 1180px); margin: 2rem auto 0; border-block: 1px solid rgb(var(--member-accent-rgb) / .16); }
 .member-nav-item { display: flex; flex-direction: column; gap: .55rem; min-height: 9rem; padding: 1.7rem 0; color: #a9b4c2; text-decoration: none; transition: color .25s ease, background .25s ease, padding .25s ease; }
 .member-nav-item + .member-nav-item { border-left: 1px solid rgb(var(--member-accent-rgb) / .12); }

@@ -3,6 +3,7 @@ import EmmanuelPage from './pages/EmmanuelPage'
 import EmilioPage from './pages/EmilioPage'
 import FiorellaPage from './pages/FiorellaPage'
 import JosefinaPage from './pages/JosefinaPage'
+import NahuelPage from './pages/NahuelPage'
 
 const nodes = [
   { x: '7%', y: '24%', delay: '0s' },
@@ -159,6 +160,10 @@ function LandingPage() {
                 <span>Memoria y almacenamiento</span>
                 Josefina Madai Alcaraz
               </a>
+              <a className="member-entry" href="/nahuel">
+                <span>Entrada/Salida, comunicación, interrupciones y DMA</span>
+                Marcelo Nahuel Raspo
+              </a>
             </div>
           </div>
         </div>
@@ -186,6 +191,7 @@ function App() {
   if (path === '/emmanuel') return <EmmanuelPage />
   if (path === '/emilio') return <EmilioPage />
   if (path === '/josefina') return <JosefinaPage />
+  if (path === '/nahuel') return <NahuelPage />
   return <LandingPage />
 }
 
