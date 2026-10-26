@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import BrandMark from '../components/BrandMark'
+import MemberIdentity from '../components/MemberIdentity'
+import MemberNavigation from '../components/MemberNavigation'
+import { memberTheme } from '../memberConfig'
 import '../emilio.css'
 
 const instructionStages = [
@@ -68,7 +71,7 @@ function EmilioPage() {
   const [processorMode, setProcessorMode] = useState<'tracking' | 'render' | 'complete' | null>(null)
 
   return (
-    <main className="emilio-page">
+    <main className="emilio-page" style={memberTheme('emilio')}>
       <header className="emi-nav">
         <a href="/" aria-label="Volver a la portada"><BrandMark /></a>
         <a className="emi-back" href="/"><span>←</span> Volver a la portada</a>
@@ -77,10 +80,10 @@ function EmilioPage() {
       <section className="emi-hero emi-shell" aria-labelledby="emi-title">
         <div className="chip-field" aria-hidden="true"><i /><i /><i /><i /><span>CPU</span></div>
         <div className="emi-kicker"><span>APORTE 03</span> PROCESAMIENTO DEL SISTEMA</div>
-        <div className="emi-role-title">CPU, GPU Y CICLO DE INSTRUCCIÓN</div>
+        <MemberIdentity memberId="emilio" />
         <h1 id="emi-title">Emilio<br /><strong>Santiago Guzmán</strong></h1>
         <div className="emi-intro-grid">
-          <p>Su aporte analiza cómo CPU, GPU, Unidad de Control, ALU, registros, caché e ISA colaboran para transformar datos de tracking en una respuesta visual de baja latencia.</p>
+          <p>Esta sección analiza cómo CPU, GPU, Unidad de Control, ALU, registros, caché e ISA colaboran para transformar datos de tracking en una respuesta visual de baja latencia.</p>
           <div className="clock-panel"><span>PROCESAMIENTO</span><strong>REAL TIME</strong><small>DATOS → INSTRUCCIONES → FRAME</small></div>
         </div>
       </section>
@@ -156,7 +159,7 @@ function EmilioPage() {
 
       <section className="emi-section processor-demo" aria-labelledby="demo-title">
         <div className="emi-shell">
-          <div className="emi-section-heading"><span>08 / CPU VS GPU</span><h2 id="demo-title">Asignación de trabajo</h2><p>Activá una tarea para identificar qué componente toma protagonismo.</p></div>
+          <div className="emi-section-heading"><span>08 / CPU VS GPU</span><h2 id="demo-title">Asignación de trabajo</h2><p>La selección de una tarea permite identificar qué componente toma protagonismo.</p></div>
           <div className="processor-actions"><button type="button" onClick={() => setProcessorMode('tracking')}>PROCESAR TRACKING</button><button type="button" onClick={() => setProcessorMode('render')}>RENDERIZAR ESCENA</button><button type="button" onClick={() => setProcessorMode('complete')}>EJECUTAR CICLO COMPLETO</button></div>
           <ProcessorFlow mode={processorMode} />
         </div>
@@ -174,6 +177,7 @@ function EmilioPage() {
         <p className="emi-closing">El procesamiento conecta los datos capturados con la experiencia virtual que finalmente recibe el usuario.</p>
       </section>
 
+      <MemberNavigation currentId="emilio" />
       <footer className="emi-footer emi-shell"><BrandMark /><span>Arquitectura de Computadoras · ISPC · 2026</span><a href="#emi-title">Volver arriba ↑</a></footer>
     </main>
   )

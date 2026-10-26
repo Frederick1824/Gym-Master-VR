@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import BrandMark from '../components/BrandMark'
+import MemberIdentity from '../components/MemberIdentity'
+import MemberNavigation from '../components/MemberNavigation'
+import { memberTheme } from '../memberConfig'
 import '../emmanuel.css'
 
 type Inputs = { T: boolean; Z: boolean; B: boolean; E: boolean }
@@ -68,7 +71,7 @@ function EmmanuelPage() {
     : { T: true, Z: true, B: true, E: false })
 
   return (
-    <main className="emmanuel-page">
+    <main className="emmanuel-page" style={memberTheme('emmanuel')}>
       <header className="emm-nav">
         <a href="/" aria-label="Volver a la portada"><BrandMark /></a>
         <a className="emm-back" href="/"><span>←</span> Volver a la portada</a>
@@ -77,9 +80,10 @@ function EmmanuelPage() {
       <section className="emm-hero emm-shell" aria-labelledby="emm-title">
         <div className="binary-field" aria-hidden="true">0101&nbsp;&nbsp;1110&nbsp;&nbsp;0011<br />1010&nbsp;&nbsp;0110&nbsp;&nbsp;1101<br />0010&nbsp;&nbsp;1111&nbsp;&nbsp;0100</div>
         <div className="emm-kicker"><span>APORTE 02</span> LÓGICA DIGITAL · SIMULACIÓN</div>
+        <MemberIdentity memberId="emmanuel" />
         <h1 id="emm-title">Emmanuel<br /><strong>Gillio</strong></h1>
         <div className="emm-intro-grid">
-          <p>Su aporte se centra en el subsistema de control lógico: un circuito que evalúa condiciones de seguridad y funcionamiento para decidir si la rutina puede continuar o debe pausarse.</p>
+          <p>Esta sección estudia el subsistema de control lógico: un circuito evalúa condiciones de seguridad y funcionamiento para decidir si la rutina puede continuar o debe pausarse.</p>
           <div className={`hero-run-state ${run ? 'is-on' : ''}`}><span>RUN</span><strong>{Number(run)}</strong><small>{run ? 'SISTEMA HABILITADO' : 'SISTEMA EN PAUSA'}</small></div>
         </div>
       </section>
@@ -94,7 +98,7 @@ function EmmanuelPage() {
 
       <section className="emm-section logic-lab" aria-labelledby="logic-simulator-title">
         <div className="emm-shell">
-          <div className="emm-section-heading"><span>02 / LABORATORIO INTERACTIVO</span><h2 id="logic-simulator-title">Simulador de lógica de control</h2><p>Cambiá cualquier entrada y seguí la propagación de la señal hasta la salida.</p></div>
+          <div className="emm-section-heading"><span>02 / LABORATORIO INTERACTIVO</span><h2 id="logic-simulator-title">Simulador de lógica de control</h2><p>La modificación de cualquier entrada permite seguir la propagación de la señal hasta la salida.</p></div>
           <div className="logic-simulator-grid">
             <div className="switch-panel">
               {inputInfo.map((item) => <LogicSwitch key={item.key} signal={item.key} checked={inputs[item.key]} onToggle={() => toggle(item.key)} />)}
@@ -154,6 +158,7 @@ function EmmanuelPage() {
         <div className="emm-contribution-grid">{contributionGroups.map((group, index) => <article key={group.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
       </section>
 
+      <MemberNavigation currentId="emmanuel" />
       <footer className="emm-footer emm-shell"><BrandMark /><span>Arquitectura de Computadoras · ISPC · 2026</span><a href="#emm-title">Volver arriba ↑</a></footer>
     </main>
   )

@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react'
 import BrandMark from '../components/BrandMark'
+import MemberIdentity from '../components/MemberIdentity'
+import MemberNavigation from '../components/MemberNavigation'
+import { memberTheme } from '../memberConfig'
 import '../fiorella.css'
 
 const requirements = [
@@ -60,7 +63,7 @@ function FiorellaPage() {
   const demand = baselineRatio > 1.03 ? 'Mayor exigencia' : baselineRatio < .97 ? 'Menor exigencia' : 'Carga de referencia'
 
   return (
-    <main className="fiorella-page">
+    <main className="fiorella-page" style={memberTheme('fiorella')}>
       <header className="fio-nav">
         <a href="/" aria-label="Volver a la portada"><BrandMark /></a>
         <a className="fio-back" href="/"><span>←</span> Volver a la portada</a>
@@ -69,10 +72,10 @@ function FiorellaPage() {
       <section className="fio-hero fio-shell" aria-labelledby="fio-title">
         <div className="fio-orbit" aria-hidden="true"><i /><i /><i /></div>
         <div className="fio-kicker"><span>APORTE 01</span> SISTEMA · REQUISITOS · DATOS</div>
-        <div className="fio-role-title">DEFINICIÓN DEL SISTEMA, REQUISITOS Y DATOS</div>
+        <MemberIdentity memberId="fiorella" />
         <h1 id="fio-title">Fiorella<br /><strong>Easdale Castillo</strong></h1>
         <div className="fio-intro-grid">
-          <p>Su aporte convierte las necesidades de Gym Master VR en parámetros técnicos: define requisitos, modela la representación digital y calcula qué volumen de datos debe sostener la arquitectura.</p>
+          <p>Esta sección convierte las necesidades de Gym Master VR en parámetros técnicos: se definen requisitos, se modela la representación digital y se calcula qué volumen de datos debe sostener la arquitectura.</p>
           <div className="fio-focus" aria-label="Áreas de trabajo">
             <span>REQUISITOS</span><span>DATOS</span><span>TRANSFERENCIA</span><span>ARQUITECTURA</span>
           </div>
@@ -135,7 +138,7 @@ function FiorellaPage() {
           <div className="fio-section-heading simulator-heading">
             <span>03 / LABORATORIO INTERACTIVO</span>
             <h2 id="simulator-title">Simulador de flujo de datos</h2>
-            <p>Modificá los parámetros para observar en tiempo real cómo cambia la exigencia del sistema.</p>
+            <p>La modificación de los parámetros permite observar en tiempo real cómo cambia la exigencia del sistema.</p>
           </div>
 
           <div className="simulator-grid">
@@ -225,6 +228,7 @@ function FiorellaPage() {
         <p className="flow-note"><span>Intervención de Fiorella</span> Los requisitos definen el objetivo; el modelado de datos determina cómo circula la información hacia el resto de la arquitectura.</p>
       </section>
 
+      <MemberNavigation currentId="fiorella" />
       <footer className="fio-footer fio-shell"><BrandMark /><span>Arquitectura de Computadoras · ISPC · 2026</span><a href="#fio-title">Volver arriba ↑</a></footer>
     </main>
   )
