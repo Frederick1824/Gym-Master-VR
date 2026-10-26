@@ -5,6 +5,8 @@ import FiorellaPage from './pages/FiorellaPage'
 import FedericoPage from './pages/FedericoPage'
 import JosefinaPage from './pages/JosefinaPage'
 import NahuelPage from './pages/NahuelPage'
+import { members } from './memberConfig'
+import type { CSSProperties } from 'react'
 
 const nodes = [
   { x: '7%', y: '24%', delay: '0s' },
@@ -116,15 +118,25 @@ function LandingPage() {
   }
 
   return (
-    <main>
+    <main className="landing-page">
       <section className="hero" aria-labelledby="hero-title">
         <TrackingField />
 
         <header className="topbar">
           <BrandMark />
-          <div className="system-state">
-            <span className="state-dot" />
-            SISTEMA ONLINE
+          <div className="topbar-meta">
+            <div className="ispc-identity">
+              <img
+                src="/ispc-logo.svg"
+                alt=""
+                onError={(event) => { event.currentTarget.hidden = true }}
+              />
+              <span><b>ISPC</b> Instituto Superior Politécnico Córdoba</span>
+            </div>
+            <div className="system-state">
+              <span className="state-dot" />
+              SISTEMA ONLINE
+            </div>
           </div>
         </header>
 
@@ -144,32 +156,6 @@ function LandingPage() {
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </button>
-            <div className="member-links">
-              <a className="member-entry" href="/fiorella">
-                <span>Definición del sistema, requisitos y datos</span>
-                Fiorella Easdale Castillo
-              </a>
-              <a className="member-entry" href="/emmanuel">
-                <span>Lógica digital</span>
-                Emmanuel Gillio
-              </a>
-              <a className="member-entry" href="/emilio">
-                <span>CPU, GPU y ciclo de instrucción</span>
-                Emilio Santiago Guzmán
-              </a>
-              <a className="member-entry" href="/josefina">
-                <span>Memoria y almacenamiento</span>
-                Josefina Madai Alcaraz
-              </a>
-              <a className="member-entry" href="/nahuel">
-                <span>Entrada/Salida, comunicación, interrupciones y DMA</span>
-                Marcelo Nahuel Raspo
-              </a>
-              <a className="member-entry" href="/federico">
-                <span>Integración, arquitectura y rendimiento</span>
-                Federico Montoro
-              </a>
-            </div>
           </div>
         </div>
 
@@ -184,7 +170,87 @@ function LandingPage() {
           <span>SCROLL</span><i />
         </div>
       </section>
-      <div id="proyecto" className="project-anchor" aria-hidden="true" />
+
+      <section id="proyecto" className="project-intro landing-section" aria-labelledby="project-title">
+        <div className="section-index">01 / PROYECTO</div>
+        <div className="project-intro-copy">
+          <p className="section-kicker">Arquitectura de Computadoras · ISPC 2026</p>
+          <h2 id="project-title">Un sistema inmersivo,<br />estudiado desde su arquitectura.</h2>
+          <p>
+            Gym Master VR articula requisitos, representación de datos, lógica digital,
+            procesamiento, memoria, entrada y salida e integración para explicar cómo
+            funciona una experiencia de entrenamiento en realidad virtual.
+          </p>
+        </div>
+        <dl className="project-facts" aria-label="Datos principales del proyecto">
+          <div><dt>06</dt><dd>Aportes técnicos</dd></div>
+          <div><dt>90 Hz</dt><dd>Actualización objetivo</dd></div>
+          <div><dt>&lt; 20 ms</dt><dd>Latencia objetivo</dd></div>
+        </dl>
+      </section>
+
+      <section className="project-journey landing-section" aria-labelledby="journey-title">
+        <div className="section-heading">
+          <div>
+            <p className="section-kicker">Recorrido del proyecto</p>
+            <h2 id="journey-title">6 aportes · una arquitectura</h2>
+          </div>
+          <p>Del dato capturado al rendimiento integral del sistema.</p>
+        </div>
+
+        <div className="journey-sequence" aria-hidden="true">
+          <span>REQUISITOS</span><i /><span>LÓGICA</span><i /><span>PROCESAMIENTO</span><i />
+          <span>MEMORIA</span><i /><span>E/S</span><i /><span>INTEGRACIÓN</span>
+        </div>
+
+        <div className="journey-grid">
+          {members.map((member, index) => (
+            <a
+              className="journey-card"
+              href={member.path}
+              key={member.id}
+              style={{
+                '--card-accent': member.accent,
+                '--card-accent-rgb': member.accentRgb,
+              } as CSSProperties}
+              aria-label={`${String(index + 1).padStart(2, '0')}. ${member.area}. ${member.name}`}
+            >
+              <span className="journey-number">{String(index + 1).padStart(2, '0')}</span>
+              <span className="journey-area">
+                {member.id === 'emmanuel' ? 'Lógica digital y simulación' : member.area}
+              </span>
+              <strong>{member.name}</strong>
+              <span className="journey-action">Explorar <b aria-hidden="true">→</b></span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="poster-section landing-section" aria-labelledby="posters-title">
+        <div className="section-heading">
+          <div>
+            <p className="section-kicker">Material de presentación</p>
+            <h2 id="posters-title">Pósters del proyecto</h2>
+          </div>
+          <p>Soportes visuales preparados para la presentación académica.</p>
+        </div>
+        <div className="poster-grid">
+          <article className="poster-placeholder">
+            <div className="poster-preview" aria-hidden="true"><span>01</span><i /></div>
+            <div><span>Póster oficial</span><strong>Gym Master VR</strong><small>Activo institucional pendiente</small></div>
+          </article>
+          <article className="poster-placeholder">
+            <div className="poster-preview" aria-hidden="true"><span>02</span><i /></div>
+            <div><span>Póster de defensa</span><strong>Arquitectura del sistema</strong><small>Activo institucional pendiente</small></div>
+          </article>
+        </div>
+      </section>
+
+      <footer className="landing-footer">
+        <BrandMark />
+        <p>Arquitectura de Computadoras · ISPC · 2026</p>
+        <a href="#proyecto">Volver al recorrido ↑</a>
+      </footer>
     </main>
   )
 }
