@@ -7,12 +7,73 @@ const nodes = [
   { x: '89%', y: '57%', delay: '-.8s' },
 ]
 
+function TrainingFigures() {
+  return (
+    <div className="background-figures" aria-hidden="true">
+      <svg className="training-figure figure-strike" viewBox="0 0 320 620">
+        <defs>
+          <linearGradient id="athlete-fill-left" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#4FC3F7" stopOpacity=".3" />
+            <stop offset="1" stopColor="#0F4C81" stopOpacity=".08" />
+          </linearGradient>
+        </defs>
+        <g className="figure-motion">
+          <path className="body-plane" d="M139 164c22-13 56-8 69 18l24 105-58 31-65-32 9-87z" />
+          <path className="limb limb-back" d="M127 199 72 243 29 223M122 279 82 385 49 506" />
+          <path className="limb" d="m202 201 53 16 44-33M190 297l39 111 44 92" />
+          <path className="limb-detail" d="m72 243 24 21m133 144-25 19" />
+          <circle className="head" cx="165" cy="118" r="39" />
+          <path className="headset" d="M126 106c21-12 55-13 78-2l-2 30c-22 9-51 9-74 0z" />
+          <path className="headset-light" d="M139 119h49" />
+          <path className="torso-line" d="m133 177 35 41 31-40M168 218l5 79" />
+          <g className="body-tracking">
+            <circle cx="128" cy="199" r="5" /><circle cx="72" cy="243" r="5" />
+            <circle cx="29" cy="223" r="5" /><circle cx="202" cy="201" r="5" />
+            <circle cx="255" cy="217" r="5" /><circle cx="299" cy="184" r="5" />
+            <circle cx="122" cy="279" r="5" /><circle cx="82" cy="385" r="5" />
+            <circle cx="190" cy="297" r="5" /><circle cx="229" cy="408" r="5" />
+          </g>
+          <path className="ground-trace" d="M19 526h274" />
+        </g>
+      </svg>
+
+      <svg className="training-figure figure-lunge" viewBox="0 0 340 620">
+        <defs>
+          <linearGradient id="athlete-fill-right" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#1E88E5" stopOpacity=".28" />
+            <stop offset="1" stopColor="#0B1F33" stopOpacity=".08" />
+          </linearGradient>
+        </defs>
+        <g className="figure-motion">
+          <path className="body-plane" d="M138 158c22-15 59-12 75 11l35 102-56 45-72-23 3-95z" />
+          <path className="limb limb-back" d="m132 194-58 56-35 72M119 284 70 383 24 440" />
+          <path className="limb" d="m207 190 46 50 39 63M194 303l61 55 54 96" />
+          <path className="limb-detail" d="m74 250 29 13m152 95-18 27" />
+          <circle className="head" cx="165" cy="111" r="39" />
+          <path className="headset" d="M126 99c24-11 57-10 79 3l-4 30c-24 8-51 7-73-2z" />
+          <path className="headset-light" d="m139 114 49 2" />
+          <path className="torso-line" d="m137 172 37 42 30-43M174 214l10 84" />
+          <g className="body-tracking">
+            <circle cx="132" cy="194" r="5" /><circle cx="74" cy="250" r="5" />
+            <circle cx="39" cy="322" r="5" /><circle cx="207" cy="190" r="5" />
+            <circle cx="253" cy="240" r="5" /><circle cx="292" cy="303" r="5" />
+            <circle cx="119" cy="284" r="5" /><circle cx="70" cy="383" r="5" />
+            <circle cx="194" cy="303" r="5" /><circle cx="255" cy="358" r="5" />
+          </g>
+          <path className="ground-trace" d="M17 474h306" />
+        </g>
+      </svg>
+    </div>
+  )
+}
+
 function TrackingField() {
   return (
     <div className="tracking-field" aria-hidden="true">
       <div className="orb orb-left" />
       <div className="orb orb-right" />
       <div className="grid-plane" />
+      <TrainingFigures />
 
       <svg className="signal-map" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
         <defs>

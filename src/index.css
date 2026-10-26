@@ -122,6 +122,26 @@ h1 strong { width: max-content; margin: .08em 0 0 -.035em; color: transparent; f
 .orb { position: absolute; width: 30rem; aspect-ratio: 1; border-radius: 50%; filter: blur(90px); opacity: .08; }
 .orb-left { left: -17rem; top: 25%; background: #6BCB77; opacity: .035; animation: orbFloat 9s ease-in-out infinite; }
 .orb-right { right: -18rem; top: -10%; background: #1E88E5; opacity: .09; animation: orbFloat 12s ease-in-out -3s infinite reverse; }
+.background-figures { position: absolute; inset: 7% 0 0; z-index: 0; overflow: hidden; opacity: .72; mask-image: linear-gradient(to bottom, transparent 1%, black 14%, black 77%, transparent 100%); }
+.background-figures::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 48% 48%, rgba(7,20,33,.78) 0 22%, rgba(7,20,33,.28) 48%, transparent 72%); }
+.training-figure { position: absolute; bottom: -4%; width: clamp(15rem, 25vw, 25rem); height: min(74vh, 42rem); overflow: visible; filter: drop-shadow(0 0 22px rgba(30,136,229,.11)); }
+.figure-strike { left: clamp(-5rem, 1vw, 2rem); transform: rotate(-2deg); }
+.figure-lunge { right: clamp(-6rem, 3vw, 4rem); transform: rotate(2deg); }
+.figure-motion { transform-box: fill-box; transform-origin: center bottom; animation: figureBreathe 7s ease-in-out infinite; }
+.figure-lunge .figure-motion { animation-delay: -3.2s; animation-duration: 8.4s; }
+.body-plane { fill: url(#athlete-fill-left); stroke: rgba(79,195,247,.38); stroke-width: 1.5; }
+.figure-lunge .body-plane { fill: url(#athlete-fill-right); }
+.head { fill: rgba(11,31,51,.78); stroke: rgba(79,195,247,.34); stroke-width: 1.5; }
+.headset { fill: rgba(15,76,129,.74); stroke: rgba(79,195,247,.72); stroke-width: 2; }
+.headset-light { fill: none; stroke: rgba(79,195,247,.85); stroke-width: 2; filter: drop-shadow(0 0 5px rgba(79,195,247,.65)); animation: headsetGlow 4.2s ease-in-out infinite; }
+.limb, .limb-back, .limb-detail, .torso-line { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.limb { stroke: rgba(79,195,247,.45); stroke-width: 19; }
+.limb-back { stroke: rgba(30,136,229,.3); stroke-width: 18; }
+.limb-detail { stroke: rgba(169,180,194,.2); stroke-width: 3; }
+.torso-line { stroke: rgba(79,195,247,.26); stroke-width: 2; }
+.body-tracking circle { fill: #4FC3F7; stroke: rgba(245,247,250,.48); stroke-width: 1; filter: drop-shadow(0 0 6px rgba(79,195,247,.72)); animation: jointPulse 3.8s ease-in-out infinite; }
+.body-tracking circle:nth-child(2n) { animation-delay: -1.9s; }
+.ground-trace { fill: none; stroke: rgba(79,195,247,.16); stroke-width: 1; stroke-dasharray: 6 12; animation: dataFlow 14s linear infinite; }
 .signal-map { position: absolute; width: 100%; height: 100%; opacity: .46; }
 .signal-line { fill: none; stroke: url(#signal); stroke-width: 1; stroke-dasharray: 7 16; vector-effect: non-scaling-stroke; animation: dataFlow 18s linear infinite; }
 .signal-b { opacity: .42; animation-duration: 24s; animation-direction: reverse; }
@@ -153,6 +173,9 @@ h1 strong { width: max-content; margin: .08em 0 0 -.035em; color: transparent; f
 @keyframes slowSpin { to { transform: rotate(360deg); } }
 @keyframes orbFloat { 50% { transform: translate(3rem, -2rem) scale(1.12); } }
 @keyframes scrollLine { 0% { left: -50%; } 65%, 100% { left: 110%; } }
+@keyframes figureBreathe { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-7px) scale(1.008); } }
+@keyframes headsetGlow { 50% { opacity: .5; filter: drop-shadow(0 0 2px rgba(79,195,247,.3)); } }
+@keyframes jointPulse { 0%, 100% { opacity: .34; transform: scale(.72); } 50% { opacity: .9; transform: scale(1.12); } }
 
 @media (max-width: 700px) {
   .topbar { padding-top: 1.5rem; }
@@ -164,6 +187,10 @@ h1 strong { width: max-content; margin: .08em 0 0 -.035em; color: transparent; f
   .data-tag-left { bottom: 3rem; }
   .scroll-cue { display: none; }
   .reticle-one { right: -4rem; top: 20%; opacity: .55; }
+  .background-figures { top: 12%; opacity: .48; }
+  .training-figure { bottom: -2%; width: 14rem; height: 55vh; }
+  .figure-strike { left: -6.5rem; }
+  .figure-lunge { right: -6.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
