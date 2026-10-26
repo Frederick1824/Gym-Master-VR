@@ -147,7 +147,7 @@ function LandingPage() {
             <strong>VR</strong>
           </h1>
           <p className="subtitle">Sistema de realidad virtual para entrenamiento</p>
-          <p className="institution">Arquitectura de Computadoras <i /> ISPC <i /> 2026</p>
+          <p className="institution">Arquitectura de Computadoras <i /> Prof. Daniel Meloni <i /> ISPC <i /> 2026</p>
 
           <div className="hero-actions">
             <button className="explore-button" type="button" onClick={scrollToProject}>
