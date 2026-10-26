@@ -126,9 +126,19 @@ Ciclo representado:
 Fetch → Decode → Execute → Memory Access → Write Back
 ```
 
+### ✅ Josefina · Memoria y almacenamiento
+
+Incluye:
+
+- jerarquía Registros → Caché → RAM → SSD NVMe;
+- comparación de latencias y capacidades;
+- simulación de acceso a memoria;
+- análisis de RAM insuficiente y uso de swap;
+- comparación entre telemetría cruda y resumen de sesión;
+- cálculo de almacenamiento por sesión.
+
 ### 🚧 Próximas secciones
 
-- Josefina: memoria y almacenamiento.
 - Nahuel: entrada/salida, comunicación, interrupciones y DMA.
 - Federico: integración, arquitectura, rendimiento, cuellos de botella y mejoras futuras.
 
@@ -217,13 +227,15 @@ src/
 ├── pages/
 │   ├── FiorellaPage.tsx
 │   ├── EmmanuelPage.tsx
-│   └── EmilioPage.tsx
+│   ├── EmilioPage.tsx
+│   └── JosefinaPage.tsx
 ├── App.tsx
 ├── main.tsx
 ├── index.css
 ├── fiorella.css
 ├── emmanuel.css
-└── emilio.css
+├── emilio.css
+└── josefina.css
 ```
 
 La estructura continuará creciendo de forma modular a medida que se incorporen las siguientes áreas del proyecto.
@@ -250,7 +262,8 @@ Actualmente están implementadas:
 - identidad visual general;
 - sección interactiva de Fiorella;
 - sección interactiva de Emmanuel;
-- sección interactiva de Emilio.
+- sección interactiva de Emilio;
+- sección interactiva de Josefina.
 
 El resto de las secciones se incorporará progresivamente manteniendo una arquitectura visual y técnica común.
 
