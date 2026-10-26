@@ -2,6 +2,7 @@ import BrandMark from './components/BrandMark'
 import EmmanuelPage from './pages/EmmanuelPage'
 import EmilioPage from './pages/EmilioPage'
 import FiorellaPage from './pages/FiorellaPage'
+import JosefinaPage from './pages/JosefinaPage'
 
 const nodes = [
   { x: '7%', y: '24%', delay: '0s' },
@@ -154,6 +155,10 @@ function LandingPage() {
                 <span>CPU, GPU y ciclo de instrucción</span>
                 Emilio Santiago Guzmán
               </a>
+              <a className="member-entry" href="/josefina">
+                <span>Memoria y almacenamiento</span>
+                Josefina Madai Alcaraz
+              </a>
             </div>
           </div>
         </div>
@@ -180,6 +185,7 @@ function App() {
   if (path === '/fiorella') return <FiorellaPage />
   if (path === '/emmanuel') return <EmmanuelPage />
   if (path === '/emilio') return <EmilioPage />
+  if (path === '/josefina') return <JosefinaPage />
   return <LandingPage />
 }
 

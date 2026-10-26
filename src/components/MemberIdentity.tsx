@@ -7,7 +7,7 @@ function MemberIdentity({ memberId }: { memberId: MemberId }) {
   return (
     <div className="member-identity">
       <span>{String(index).padStart(2, '0')} / {String(members.length).padStart(2, '0')}</span>
-      <strong>{member.area}</strong>
+      <strong><b>{member.titleSolid}</b><i>{member.titleOutline}</i></strong>
     </div>
   )
 }
