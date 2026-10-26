@@ -1,3 +1,6 @@
+import BrandMark from './components/BrandMark'
+import FiorellaPage from './pages/FiorellaPage'
+
 const nodes = [
   { x: '7%', y: '24%', delay: '0s' },
   { x: '19%', y: '68%', delay: '-1.6s' },
@@ -102,19 +105,7 @@ function TrackingField() {
   )
 }
 
-function BrandMark() {
-  return (
-    <div className="brand-mark" aria-label="Gym Master VR">
-      <svg viewBox="0 0 38 38" aria-hidden="true">
-        <path d="M6 9.5 19 3l13 6.5v19L19 35 6 28.5z" />
-        <path d="M12 14v10l7 3.5 7-3.5v-5h-7" />
-      </svg>
-      <span>GM<span>VR</span></span>
-    </div>
-  )
-}
-
-function App() {
+function LandingPage() {
   const scrollToProject = () => {
     document.getElementById('proyecto')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -141,12 +132,18 @@ function App() {
           <p className="subtitle">Sistema de realidad virtual para entrenamiento</p>
           <p className="institution">Arquitectura de Computadoras <i /> ISPC <i /> 2026</p>
 
-          <button className="explore-button" type="button" onClick={scrollToProject}>
-            <span>Explorar proyecto</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </button>
+          <div className="hero-actions">
+            <button className="explore-button" type="button" onClick={scrollToProject}>
+              <span>Explorar proyecto</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </button>
+            <a className="member-entry" href="/fiorella">
+              <span>Aporte individual</span>
+              Fiorella Easdale Castillo
+            </a>
+          </div>
         </div>
 
         <div className="data-tag data-tag-left" aria-hidden="true">
@@ -163,6 +160,12 @@ function App() {
       <div id="proyecto" className="project-anchor" aria-hidden="true" />
     </main>
   )
+}
+
+function App() {
+  return window.location.pathname.replace(/\/$/, '') === '/fiorella'
+    ? <FiorellaPage />
+    : <LandingPage />
 }
 
 export default App

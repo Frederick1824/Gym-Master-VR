@@ -21,6 +21,7 @@ html { scroll-behavior: smooth; background: #071421; }
 body { margin: 0; min-width: 320px; min-height: 100vh; overflow-x: hidden; }
 
 button, a { font: inherit; }
+a { color: inherit; }
 
 .hero {
   position: relative;
@@ -116,6 +117,12 @@ h1 strong { width: max-content; margin: .08em 0 0 -.035em; color: transparent; f
 .explore-button:hover::before { inset-right: 0; }
 .explore-button:hover svg { stroke: #F5F7FA; transform: translateX(3px); }
 .explore-button:focus-visible { outline: 2px solid #4FC3F7; outline-offset: 4px; }
+.hero-actions { display: flex; align-items: center; gap: 1.5rem; margin-top: 2.8rem; }
+.hero-actions .explore-button { margin-top: 0; }
+.member-entry { display: flex; flex-direction: column; gap: .3rem; padding: .55rem .2rem; color: #d5dce5; font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-decoration: none; transition: color .25s ease, transform .25s ease; }
+.member-entry span { color: #718095; font-size: .54rem; letter-spacing: .2em; text-transform: uppercase; }
+.member-entry:hover { color: #4FC3F7; transform: translateX(3px); }
+.member-entry:focus-visible { outline: 2px solid #4FC3F7; outline-offset: 4px; }
 
 .tracking-field { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
 .grid-plane { position: absolute; inset: 52% -20% -55%; opacity: .16; transform: perspective(440px) rotateX(63deg); transform-origin: top; background-image: linear-gradient(rgba(79,195,247,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(30,136,229,.2) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, transparent, black 20%, transparent 78%); animation: gridDrift 11s linear infinite; }
@@ -183,6 +190,7 @@ h1 strong { width: max-content; margin: .08em 0 0 -.035em; color: transparent; f
   .eyebrow { max-width: 90%; line-height: 1.5; }
   h1 { line-height: .87; }
   .institution { flex-wrap: wrap; gap: .5rem; max-width: 90%; line-height: 1.6; }
+  .hero-actions { align-items: flex-start; flex-direction: column; gap: .8rem; }
   .data-tag-right, .reticle-two { display: none; }
   .data-tag-left { bottom: 3rem; }
   .scroll-cue { display: none; }
