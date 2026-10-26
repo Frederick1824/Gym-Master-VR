@@ -1,4 +1,5 @@
 import BrandMark from './components/BrandMark'
+import EmmanuelPage from './pages/EmmanuelPage'
 import FiorellaPage from './pages/FiorellaPage'
 
 const nodes = [
@@ -139,10 +140,16 @@ function LandingPage() {
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </button>
-            <a className="member-entry" href="/fiorella">
-              <span>Aporte individual</span>
-              Fiorella Easdale Castillo
-            </a>
+            <div className="member-links">
+              <a className="member-entry" href="/fiorella">
+                <span>Aporte individual</span>
+                Fiorella Easdale Castillo
+              </a>
+              <a className="member-entry" href="/emmanuel">
+                <span>Lógica digital</span>
+                Emmanuel Gillio
+              </a>
+            </div>
           </div>
         </div>
 
@@ -163,9 +170,11 @@ function LandingPage() {
 }
 
 function App() {
-  return window.location.pathname.replace(/\/$/, '') === '/fiorella'
-    ? <FiorellaPage />
-    : <LandingPage />
+  const path = window.location.pathname.replace(/\/$/, '')
+
+  if (path === '/fiorella') return <FiorellaPage />
+  if (path === '/emmanuel') return <EmmanuelPage />
+  return <LandingPage />
 }
 
 export default App
