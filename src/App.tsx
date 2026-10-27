@@ -18,6 +18,21 @@ const nodes = [
   { x: '89%', y: '57%', delay: '-.8s' },
 ]
 
+const posters = [
+  {
+    number: '01',
+    title: 'Póster oficial del ABP',
+    subtitle: 'Arquitectura de las Computadoras · Gym Master VR',
+    image: '/posters/gym-master-vr-oficial.png',
+  },
+  {
+    number: '02',
+    title: 'Póster para la defensa',
+    subtitle: 'Versión visual para exposición oral',
+    image: '/posters/gym-master-vr-defensa.png',
+  },
+] as const
+
 function TrainingFigures() {
   return (
     <div className="background-figures" aria-hidden="true">
@@ -114,7 +129,7 @@ function TrackingField() {
 }
 
 function LandingPage() {
-  const [isPosterOpen, setIsPosterOpen] = useState(false)
+  const [activePoster, setActivePoster] = useState<(typeof posters)[number] | null>(null)
   const [posterZoom, setPosterZoom] = useState(100)
   const closePosterButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -123,7 +138,7 @@ function LandingPage() {
   }
 
   const closePoster = () => {
-    setIsPosterOpen(false)
+    setActivePoster(null)
     setPosterZoom(100)
   }
 
@@ -132,7 +147,7 @@ function LandingPage() {
   }
 
   useEffect(() => {
-    if (!isPosterOpen) return
+    if (!activePoster) return
 
     const previousOverflow = document.body.style.overflow
     const previouslyFocused = document.activeElement as HTMLElement | null
@@ -164,7 +179,7 @@ function LandingPage() {
       document.removeEventListener('keydown', handleKeyDown)
       previouslyFocused?.focus()
     }
-  }, [isPosterOpen])
+  }, [activePoster])
 
   return (
     <main className="landing-page">
@@ -286,25 +301,23 @@ function LandingPage() {
           <p>Soportes visuales preparados para la presentación académica.</p>
         </div>
         <div className="poster-grid">
-          <button className="poster-card poster-card-official" type="button" onClick={() => setIsPosterOpen(true)}>
-            <span className="poster-image-preview">
-              <img src="/posters/gym-master-vr-oficial.png" alt="Vista previa del póster oficial de Gym Master VR" />
-              <span className="poster-card-overlay">Ver póster <b aria-hidden="true">↗</b></span>
-            </span>
-            <span className="poster-card-copy">
-              <span>01</span>
-              <strong>Póster oficial del ABP</strong>
-              <small>Arquitectura de las Computadoras · Gym Master VR</small>
-            </span>
-          </button>
-          <article className="poster-placeholder">
-            <div className="poster-preview" aria-hidden="true"><span>02</span><i /></div>
-            <div><span>02</span><strong>Póster para la defensa</strong><small>Activo institucional pendiente</small></div>
-          </article>
+          {posters.map((poster) => (
+            <button className="poster-card" type="button" key={poster.number} onClick={() => setActivePoster(poster)}>
+              <span className="poster-image-preview">
+                <img src={poster.image} alt={`Vista previa de ${poster.title.toLowerCase()} de Gym Master VR`} />
+                <span className="poster-card-overlay">Ver póster <b aria-hidden="true">↗</b></span>
+              </span>
+              <span className="poster-card-copy">
+                <span>{poster.number}</span>
+                <strong>{poster.title}</strong>
+                <small>{poster.subtitle}</small>
+              </span>
+            </button>
+          ))}
         </div>
       </section>
 
-      {isPosterOpen && (
+      {activePoster && (
         <div
           className="poster-viewer"
           role="dialog"
@@ -312,7 +325,7 @@ function LandingPage() {
           aria-labelledby="poster-viewer-title"
         >
           <div className="poster-viewer-toolbar">
-            <strong id="poster-viewer-title">Póster oficial del ABP</strong>
+            <strong id="poster-viewer-title">{activePoster.title}</strong>
             <div className="poster-viewer-controls" aria-label="Controles de zoom">
               <button
                 type="button"
@@ -334,7 +347,7 @@ function LandingPage() {
           </div>
           <div className="poster-viewer-scroll" onClick={closePosterFromBackdrop}>
             <div className="poster-viewer-stage" style={{ '--poster-zoom': `${posterZoom}%` } as CSSProperties}>
-              <img src="/posters/gym-master-vr-oficial.png" alt="Póster oficial del ABP Gym Master VR" />
+              <img src={activePoster.image} alt={`${activePoster.title} de Gym Master VR`} />
             </div>
           </div>
         </div>
