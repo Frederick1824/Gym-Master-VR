@@ -6,7 +6,8 @@ import FedericoPage from './pages/FedericoPage'
 import JosefinaPage from './pages/JosefinaPage'
 import NahuelPage from './pages/NahuelPage'
 import { members } from './memberConfig'
-import type { CSSProperties } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { CSSProperties, MouseEvent } from 'react'
 
 const nodes = [
   { x: '7%', y: '24%', delay: '0s' },
@@ -113,9 +114,57 @@ function TrackingField() {
 }
 
 function LandingPage() {
+  const [isPosterOpen, setIsPosterOpen] = useState(false)
+  const [posterZoom, setPosterZoom] = useState(100)
+  const closePosterButtonRef = useRef<HTMLButtonElement>(null)
+
   const scrollToProject = () => {
     document.getElementById('proyecto')?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const closePoster = () => {
+    setIsPosterOpen(false)
+    setPosterZoom(100)
+  }
+
+  const closePosterFromBackdrop = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) closePoster()
+  }
+
+  useEffect(() => {
+    if (!isPosterOpen) return
+
+    const previousOverflow = document.body.style.overflow
+    const previouslyFocused = document.activeElement as HTMLElement | null
+    document.body.style.overflow = 'hidden'
+    closePosterButtonRef.current?.focus()
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closePoster()
+      if (event.key !== 'Tab') return
+
+      const controls = Array.from(
+        document.querySelectorAll<HTMLElement>('.poster-viewer button:not(:disabled)'),
+      )
+      const firstControl = controls[0]
+      const lastControl = controls.at(-1)
+
+      if (event.shiftKey && document.activeElement === firstControl) {
+        event.preventDefault()
+        lastControl?.focus()
+      } else if (!event.shiftKey && document.activeElement === lastControl) {
+        event.preventDefault()
+        firstControl?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+      previouslyFocused?.focus()
+    }
+  }, [isPosterOpen])
 
   return (
     <main className="landing-page">
@@ -237,16 +286,59 @@ function LandingPage() {
           <p>Soportes visuales preparados para la presentación académica.</p>
         </div>
         <div className="poster-grid">
-          <article className="poster-placeholder">
-            <div className="poster-preview" aria-hidden="true"><span>01</span><i /></div>
-            <div><span>Póster oficial</span><strong>Gym Master VR</strong><small>Activo institucional pendiente</small></div>
-          </article>
+          <button className="poster-card poster-card-official" type="button" onClick={() => setIsPosterOpen(true)}>
+            <span className="poster-image-preview">
+              <img src="/posters/gym-master-vr-oficial.png" alt="Vista previa del póster oficial de Gym Master VR" />
+              <span className="poster-card-overlay">Ver póster <b aria-hidden="true">↗</b></span>
+            </span>
+            <span className="poster-card-copy">
+              <span>01</span>
+              <strong>Póster oficial del ABP</strong>
+              <small>Arquitectura de las Computadoras · Gym Master VR</small>
+            </span>
+          </button>
           <article className="poster-placeholder">
             <div className="poster-preview" aria-hidden="true"><span>02</span><i /></div>
-            <div><span>Póster de defensa</span><strong>Arquitectura del sistema</strong><small>Activo institucional pendiente</small></div>
+            <div><span>02</span><strong>Póster para la defensa</strong><small>Activo institucional pendiente</small></div>
           </article>
         </div>
       </section>
+
+      {isPosterOpen && (
+        <div
+          className="poster-viewer"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="poster-viewer-title"
+        >
+          <div className="poster-viewer-toolbar">
+            <strong id="poster-viewer-title">Póster oficial del ABP</strong>
+            <div className="poster-viewer-controls" aria-label="Controles de zoom">
+              <button
+                type="button"
+                aria-label="Reducir zoom"
+                disabled={posterZoom === 75}
+                onClick={() => setPosterZoom((zoom) => Math.max(75, zoom - 25))}
+              >−</button>
+              <button type="button" aria-label="Restablecer zoom al 100 por ciento" onClick={() => setPosterZoom(100)}>
+                {posterZoom}%
+              </button>
+              <button
+                type="button"
+                aria-label="Aumentar zoom"
+                disabled={posterZoom === 200}
+                onClick={() => setPosterZoom((zoom) => Math.min(200, zoom + 25))}
+              >+</button>
+              <button ref={closePosterButtonRef} type="button" aria-label="Cerrar visor del póster" onClick={closePoster}>✕</button>
+            </div>
+          </div>
+          <div className="poster-viewer-scroll" onClick={closePosterFromBackdrop}>
+            <div className="poster-viewer-stage" style={{ '--poster-zoom': `${posterZoom}%` } as CSSProperties}>
+              <img src="/posters/gym-master-vr-oficial.png" alt="Póster oficial del ABP Gym Master VR" />
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className="landing-footer">
         <BrandMark />
