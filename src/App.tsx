@@ -214,7 +214,8 @@ function LandingPage() {
               } as CSSProperties}
               aria-label={`${String(index + 1).padStart(2, '0')}. ${member.area}. ${member.name}`}
             >
-              <span className="journey-card-top">
+              <span className="journey-number">{String(index + 1).padStart(2, '0')}</span>
+              <span className="journey-card-content">
                 <span className="journey-area">
                   {member.id === 'emmanuel' ? 'Lógica digital y simulación' : member.area}
                 </span>
@@ -222,7 +223,6 @@ function LandingPage() {
                 <span className="journey-divider" aria-hidden="true" />
                 <span className="journey-action">Explorar <b aria-hidden="true">→</b></span>
               </span>
-              <span className="journey-number">{String(index + 1).padStart(2, '0')}</span>
             </a>
           ))}
         </div>
