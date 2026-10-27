@@ -315,6 +315,11 @@ function LandingPage() {
             </button>
           ))}
         </div>
+        <div className="project-download-row">
+          <a className="project-download" href="/docs/gym-master-vr-proyecto-final.pdf" download>
+            Descargar proyecto final <span aria-hidden="true">↓</span>
+          </a>
+        </div>
       </section>
 
       {activePoster && (
@@ -355,7 +360,12 @@ function LandingPage() {
 
       <footer className="landing-footer">
         <BrandMark />
-        <p>Arquitectura de Computadoras · ISPC · 2026</p>
+        <div className="footer-copy">
+          <p>Arquitectura de Computadoras · ISPC · 2026</p>
+          <p className="footer-credit">
+            Desarrollado por <a href="https://ftk-lab.vercel.app/" target="_blank" rel="noopener noreferrer">FTK Lab</a> con 🖤
+          </p>
+        </div>
         <a href="#proyecto">Volver al recorrido ↑</a>
       </footer>
     </main>
