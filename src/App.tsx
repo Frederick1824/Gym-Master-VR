@@ -127,9 +127,8 @@ function LandingPage() {
           <div className="topbar-meta">
             <div className="ispc-identity">
               <img
-                src="/ispc-logo.svg"
-                alt=""
-                onError={(event) => { event.currentTarget.hidden = true }}
+                src="/ispc-logo.png"
+                alt="Logo oficial del ISPC"
               />
               <span><b>ISPC</b> Instituto Superior Politécnico Córdoba</span>
             </div>
@@ -215,12 +214,15 @@ function LandingPage() {
               } as CSSProperties}
               aria-label={`${String(index + 1).padStart(2, '0')}. ${member.area}. ${member.name}`}
             >
-              <span className="journey-number">{String(index + 1).padStart(2, '0')}</span>
-              <span className="journey-area">
-                {member.id === 'emmanuel' ? 'Lógica digital y simulación' : member.area}
+              <span className="journey-card-top">
+                <span className="journey-area">
+                  {member.id === 'emmanuel' ? 'Lógica digital y simulación' : member.area}
+                </span>
+                <strong>{member.name}</strong>
+                <span className="journey-divider" aria-hidden="true" />
+                <span className="journey-action">Explorar <b aria-hidden="true">→</b></span>
               </span>
-              <strong>{member.name}</strong>
-              <span className="journey-action">Explorar <b aria-hidden="true">→</b></span>
+              <span className="journey-number">{String(index + 1).padStart(2, '0')}</span>
             </a>
           ))}
         </div>
